@@ -2,27 +2,36 @@
 
 @section('content')
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Dirección</th>
-        <th scope="col">Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>
-            <a class="btn btn-warning" href="#" role="button">Editar</a>
-            <a class="btn btn-danger" href="#" role="button">Eliminar</a>
-        </td>
-      </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Télefono</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($empresas as $empresa)
+                <tr>
+                    <th scope="row">{{ $empresa->id }}</th>
+                    <td>{{ $empresa->nombre_empresa }}</td>
+                    <td>{{ $empresa->direccion }}</td>
+                    <td>{{ $empresa->telefono }}</td>
+                    <td>
+                        <a class="btn btn-warning" href="{{ route('empresas.edit', $empresa->id) }}"
+                            role="button">Editar</a>
+                        <form action="{{ route('empresas.delete', $empresa->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                        </form>
 
-    </tbody>
-  </table>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
 @endsection

@@ -27,7 +27,7 @@
             </div>
 
             <div class="buton_empresas">
-                <button type="button" class="btn btn-danger estilo_boton">Introducir datos</button>
+                <button type="submit" class="btn btn-danger estilo_boton">Introducir datos</button>
             </div>
 
 

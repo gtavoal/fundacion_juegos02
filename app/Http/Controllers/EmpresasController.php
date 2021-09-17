@@ -9,11 +9,13 @@ class EmpresasController extends Controller
 {
     public function index(){
 
-        $empresas = Empresas::where('id', 3)->first();
+        $empresas = Empresas::get();
 
-        dd($empresas);
+        //dd($empresas);
 
-        return view('empresas.index');
+        return view('empresas.index', [
+            'empresas' => $empresas,
+        ]);
         }
 
         public function create(){
@@ -25,19 +27,45 @@ class EmpresasController extends Controller
         }
 
         public function edit($id){
-        // Muestra un registro especifico pero con inputs que nos permiten actualizar el registro despues
+
+            //$empresa = Empresas::findOrFail($id);
+            $empresa = Empresas::where('id', $id)->first();
+
+            return view('empresas.edit_empresa', [
+                'empresa' => $empresa,
+            ]);
         }
 
         public function store(Request $request){
-        // Introducir datos a la base de datos
+
+            $empresa = new Empresas;
+            $empresa->nombre_empresa = $request->nombre_empresa;
+            $empresa->direccion = $request->direccion_empresa;
+            $empresa->nit = $request->nit_empresa;
+            $empresa->telefono = $request->telefono_empresa;
+            $empresa->save();
+
+            return back();
+
+
+
         }
 
-        public function update($id){
-        // Actualiza un registro en la base de datos proveniete de un formulario
+        public function update(Request $request, $id){
+            $empresa = Empresas::findOrFail($id);
+            $empresa->nombre_empresa = $request->nombre_empresa;
+            $empresa->direccion = $request->direccion_empresa;
+            $empresa->nit = $request->nit_empresa;
+            $empresa->telefono = $request->telefono_empresa;
+            $empresa->save();
+            return back();
         }
 
         public function delete($id){
-        // Elimina un único registro de nuestra base de datos
+
+        Empresas::where('id', $id)->delete();
+        return back();
+
         }
 
 }

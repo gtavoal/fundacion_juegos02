@@ -18,6 +18,7 @@ class Juegos extends Migration
             $table->id();
             $table->string('nombre_juego', 100);
             $table->string('publico_objetivo', 100);
+            $table->string('caratula', 400);
             $table->integer('precio');
             $table->unsignedBigInteger('empresa_id');
             $table->foreign('empresa_id')->references('id')->on('empresas');

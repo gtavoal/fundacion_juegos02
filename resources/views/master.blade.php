@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href="dist/css/style.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link href="dist/css/style.min.css" rel="stylesheet">
 
 <head>
     <!-- Required meta tags -->
@@ -22,36 +23,41 @@
 
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Empresas </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('empresas.index')}}">Index</a>
-                        <a class="dropdown-item" href="{{route('empresas.create')}}">Crear Empresa</a>
-                        <div class="dropdown-divider"></div>
-
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Juegos </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('juegos.index')}}">Index</a>
-                        <a class="dropdown-item" href="{{route('juegos.create')}}">Crear juegos</a>
-                        <div class="dropdown-divider"></div>
-
-                    </div>
-                </li>
+                @if (auth()->user()->perfil_id == 1 || auth()->user()->perfil_id == 2)
+                    <a class="navbar-brand" href="{{ route('home') }}">Home</a>
+                @endif
 
 
+                @if (auth()->user()->perfil_id == 1)
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Empresas </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('empresas.index') }}">Index</a>
+                            <a class="dropdown-item" href="{{ route('empresas.create') }}">Crear Empresa</a>
+
+
+                        </div>
+                    </li>
+                @endif
+
+
+                @if (auth()->user()->perfil_id == 1)
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Juegos </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('juegos.index') }}">Index</a>
+                            <a class="dropdown-item" href="{{ route('juegos.create') }}">Crear juegos</a>
+
+
+                        </div>
+                    </li>
+
+                @endif
 
 
 

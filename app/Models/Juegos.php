@@ -12,7 +12,7 @@ class Juegos extends Model
     protected $table = 'juegos';
 
     protected $fillable = [
-        'id','nombre_juego','publico_objetivo','precio','empresa_id ','created_at','updated_at',
+        'id','nombre_juego','publico_objetivo','precio','empresa_id ','caratula ','created_at','updated_at',
     ];
 
 }

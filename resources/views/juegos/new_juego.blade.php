@@ -1,8 +1,6 @@
 @extends('master')
 
 
-<link rel="stylesheet" href="{{ asset('/css/estilos_juegos.css') }}" />
-
 @section('content')
 
     @if (session()->has('message'))
@@ -54,7 +52,6 @@
 
 
 
-            <br><br><br><br>
             <div class="col-12">
                 <select class="form-select" aria-label="Default select example" name="empresa_id">
                     <option value="">Seleccione una empresa</option>
